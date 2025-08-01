@@ -1,16 +1,17 @@
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
-name = "markpub_bskypost"
-version = "1.0.0"
-description = "Bluesky comments support for MarkPub websites"
+name = "markpub-socials"
+version = "1.0.2"
+description = "Social network support for MarkPub websites"
 authors = [
     {name = "William L. Anderson", email = "band@acm.org"}
 ]
 license = {text = "MIT"}
 readme = "README.md"
+homepage = "https://github.com/band/markpub-socials" 
 requires-python = ">=3.12"
 dependencies = [
     "bs4 >= 0.0.2, < 0.0.3",
@@ -19,8 +20,10 @@ dependencies = [
     "python-dotenv >= 1.0.1, < 2.0.0"
 ]
 
-[project.urls]
-repository = "https://github.com/band/markpub-bskypost"
-
 [project.scripts]
-markpub_bskypost = "markpub_bskypost.markpub_bskypost:main"
+markpub_socials = "markpub_bskypost.markpub_bskypost:main"
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+]

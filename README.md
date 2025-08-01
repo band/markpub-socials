@@ -20,7 +20,7 @@ Gratitude to [Emily Liu](https://emilyliu.me/) and [Cory Zue](https://www.coryzu
 **To install**:
 
 ``` shell
-pip install markpub_bskypost
+pip install -i https://test.pypi.org/simple/ markpub-socials
 ```  
 
 Note: this package will be transferred from this test index to `pypi.org` .  
