@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+
+# auth
+.env
+
+# Emacs
+*~
+\#*\#
+
+# Python
+venv
+__pycache__
+
+# Distribution / packaging
+dist/
+sdist/
+MANIFEST
+
+# Node
+node_modules
+
+# ruff
+ruff.toml
+.ruff_cache/
