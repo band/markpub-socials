@@ -25,7 +25,7 @@ from typing import Dict, List
 from urllib.parse import unquote
 import yaml
 
-import markpub_bskypost.bluesky_post as bluesky_post
+import markpub_socials.bluesky_post as bluesky_post
 """
 only CLI input required is
 - Bluesky and GitHub credentials if not defined in the Environment
@@ -57,7 +57,7 @@ def get_repo_filename(webpage_url, repo_name):
     logger.debug(f"repo_name: {repo_name}")
     try:
         headers= {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
-        response = requests.get(url, headers=headers, timeout=10)
+        response = requests.get(webpage_url, headers=headers, timeout=10)
         response.raise_for_status()
         soup = BeautifulSoup(response.content, 'html.parser')
         # extract the fs_path from the <meta> tag
@@ -294,7 +294,7 @@ def main():
     
     if not update_github_file_api(
             repo_name=config['repo_name'],
-            file_path=relative_filename,
+            file_path=repo_filename,
             new_content=bsky_post_url,
             commit_message="add bluesky post URL frontmatter",
             token=args.token):
