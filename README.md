@@ -1,6 +1,6 @@
 
 ![PyPI version](https://img.shields.io/pypi/v/markpub_bskypost)  
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/markpub_bskypost)](https://pypi.org/project/markpub_bskypost/)
+
 
 Bluesky Comment support for MarkPub and MassiveWiki websites
 =========================
@@ -66,16 +66,13 @@ This program is run in a terminal application and from the `.markpub` directory 
 Running `markpub_bskypost` yields  
 
 ``` shell
-Enter the Markdown file name: 
+Enter the Markpub website URL: 
 ```   
-One can enter a full-path, or a relative path, to a Markdown file in the repository, or an Obsidian URL (copied from the Obsidian file browser;  
-for example:
-`obsidian://open?vault=technosocial-praxis&file=notas%2F20250325-testnote` )  
 
-`markpub_bksypost` generates the webpage URL to embed in the post
-and then prompts for the content of the Bluesky post (showing how many
+`markpub_bksypost` prompts for the content of the Bluesky post (showing how many
 characters are available for the post text).  
 ```shell
 Enter bluesky post text (238 characters available): 
 ```  
+
 
