@@ -13,16 +13,12 @@ logger = logging.getLogger('markpub_bluesky_posting')
 import argparse
 import base64
 from bs4 import BeautifulSoup
-from datetime import datetime, timezone
 from dotenv import load_dotenv
 import json
 from pathlib import Path
 import re
 import requests
-import sys
 import subprocess
-from typing import Dict, List
-from urllib.parse import unquote
 import yaml
 
 import markpub_socials.bluesky_post as bluesky_post
@@ -194,11 +190,9 @@ def update_github_file_api(repo_name, file_path, new_content, commit_message, to
     except requests.exceptions.RequestException as e:
         error_msg = str(e)
         if hasattr(e, 'response') and e.response:
-            try:
-                error_detail = e.response.json()
-                error_msg = f"{str(e)} - {json.dumps(error_detail)}"
-            except:
-                pass
+            error_detail = e.response.json()
+            error_msg = f"{str(e)} - {json.dumps(error_detail)}"
+
         print(f"❌ API request failed: {error_msg}")
         return False
     except Exception as e:
@@ -247,6 +241,7 @@ def main():
     }
     config_file = args.config if args.config else './bskypost.yaml'
     logger.debug(f"config file: {config_file}")
+    logger.debug(f"config file exists? {Path(config_file).exists()}")
     if not Path(config_file).exists():
         # config file does not exist, look for command line arguments
         if not (args.markpubsite and args.reponame):
@@ -267,7 +262,7 @@ def main():
     config.update(updates)
 
     if (missing := [param for param, value in [("markpubsite", config.get('markpub_website')), ("reponame", config.get('repo_name'))] if value is None]):
-        print(f"Error: Both markpubsite and reponame must be provided either in config file or as command-line arguments")
+        print("Error: Both markpubsite and reponame must be provided either in config file or as command-line arguments")
         print(f"Missing: {', '.join(missing)}")
         parser.print_help()
         return -1

@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "markpub-socials"
-version = "1.0.2"
+version = "1.0.3"
 description = "Social network support for MarkPub websites"
 authors = [
     {name = "William L. Anderson", email = "band@acm.org"}
@@ -28,5 +28,17 @@ test = [
     "pytest",
 ]
 
+[dependency-groups]
+dev = [
+    "pytest>=8.4.1",
+    "ruff>=0.12.7",
+]
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/markpub_socials"]
+
+[tool.ruff.lint]
+ignore = [
+    "E401",
+    "E402",
+]

@@ -10,15 +10,12 @@ logging.basicConfig(
 )
 logger = logging.getLogger('bluesky-posting')
 
-import argparse
 from bs4 import BeautifulSoup
 from datetime import datetime, timezone
 import json
 import re
 import requests
-import sys
 from typing import Dict, List
-import traceback
 from urllib.parse import urlparse
 
 def bsky_login_session(pds_url: str, handle: str, password: str) -> Dict:
