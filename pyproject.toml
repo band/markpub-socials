@@ -21,9 +21,12 @@ dependencies = [
 ]
 
 [project.scripts]
-markpub_socials = "markpub_socials.markpub_bskypost:main"
+markpub_bskypost = "markpub_socials.markpub_bskypost:main"
 
 [project.optional-dependencies]
 test = [
     "pytest",
 ]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/markpub_socials"]
