@@ -23,3 +23,6 @@ node_modules
 # ruff
 ruff.toml
 .ruff_cache/
+
+# markpub testing
+bskypost.yaml
