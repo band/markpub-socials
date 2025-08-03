@@ -64,7 +64,7 @@ def get_repo_filename(webpage_url, repo_name):
         logger.debug(f"fs_path: {fs_path}")
         if not fs_path:
             return None
-        return fs_path
+        return fs_path[1:] if fs_path.startswith('/') else fs_path
     except requests.RequestException as e:
         logger.error(f"Error fetching webpage: {e}")
         return None
@@ -241,7 +241,6 @@ def main():
     }
     config_file = args.config if args.config else './bskypost.yaml'
     logger.debug(f"config file: {config_file}")
-    logger.debug(f"config file exists? {Path(config_file).exists()}")
     if not Path(config_file).exists():
         # config file does not exist, look for command line arguments
         if not (args.markpubsite and args.reponame):
@@ -253,7 +252,7 @@ def main():
             yaml_config = yaml.safe_load(file) or {}
         if yaml_config and isinstance(config, dict):
             config['markpub_website'] = yaml_config.get('markpub_website')
-            config['repo_name'] = yaml_config.get('repo_name')
+            config['repo_name'] = yaml_config.get('repository_name')
     except Exception as e:
        logger.error(f"Error reading YAML file: {e}")
 
@@ -262,7 +261,7 @@ def main():
     config.update(updates)
 
     if (missing := [param for param, value in [("markpubsite", config.get('markpub_website')), ("reponame", config.get('repo_name'))] if value is None]):
-        print("Error: Both markpubsite and reponame must be provided either in config file or as command-line arguments")
+        logger.critical("Error: Both markpubsite and reponame must be provided either in config file or as command-line arguments")
         print(f"Missing: {', '.join(missing)}")
         parser.print_help()
         return -1
