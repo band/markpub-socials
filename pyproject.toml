@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "markpub-socials"
-version = "1.0.3"
+version = "1.0.5"
 description = "Social network support for MarkPub websites"
 authors = [
     {name = "William L. Anderson", email = "band@acm.org"}
@@ -35,7 +35,7 @@ dev = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["markpub_socials"]
+packages = ["src/markpub_socials"]
 
 [tool.ruff.lint]
 ignore = [
