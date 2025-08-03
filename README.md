@@ -56,7 +56,7 @@ The domain_name of the Markpub website, and the owner/repository_name holding th
 
 ```yaml
 markpub_website: socialpraxis.netlify.app
-repo_name: band/technosocial-praxis
+repository_name: band/technosocial-praxis
 ```  
 
 **Use example**:  

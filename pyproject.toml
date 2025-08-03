@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "markpub-socials"
-version = "1.0.5"
+version = "1.0.6"
 description = "Social network support for MarkPub websites"
 authors = [
     {name = "William L. Anderson", email = "band@acm.org"}
